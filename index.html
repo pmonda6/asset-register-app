@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taita Taveta County — Vehicle Asset Register</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===================== LOGIN VIEW ===================== -->
+  <section id="loginView" class="login-screen">
+    <div class="login-card">
+      <span class="stamp">OFFICIAL<br>RECORD</span>
+      <p class="eyebrow">County Government of Taita Taveta</p>
+      <h1>Vehicle Asset Register</h1>
+      <form id="loginForm" autocomplete="off">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required autofocus>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit" id="loginBtn">Sign in</button>
+        <p id="loginError" class="error-text" hidden></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================== APP VIEW ===================== -->
+  <section id="appView" class="app-view" hidden>
+    <header class="topbar">
+      <div class="topbar-title">
+        <span class="eyebrow eyebrow--light">County Government of Taita Taveta</span>
+        <h1>Vehicle Asset Register</h1>
+      </div>
+      <div class="topbar-user">
+        <span id="userLabel"></span>
+        <button id="logoutBtn" class="btn-ghost">Log out</button>
+      </div>
+    </header>
+
+    <nav class="asset-tabs" id="assetTabs">
+      <button class="asset-tab active" data-type="vehicles">Vehicles</button>
+      <button class="asset-tab" data-type="land">Land</button>
+      <button class="asset-tab" data-type="buildings">Buildings</button>
+    </nav>
+
+    <div class="toolbar">
+      <input type="search" id="searchInput" placeholder="Search…">
+      <select id="statusFilter">
+        <option value="">All statuses</option>
+      </select>
+      <span id="recordCount" class="record-count"></span>
+    </div>
+
+    <div id="tableWrap" class="table-wrap">
+      <table id="vehicleTable">
+        <thead id="vehicleTableHead">
+          <!-- header cells injected by app.js, per asset type -->
+        </thead>
+        <tbody id="vehicleTableBody">
+          <!-- rows injected by app.js -->
+        </tbody>
+      </table>
+      <p id="emptyState" class="empty-state" hidden>No records match your search.</p>
+      <p id="loadingState" class="loading-state">Loading register…</p>
+    </div>
+  </section>
+
+  <!-- ===================== ROW DETAIL PANEL ===================== -->
+  <aside id="detailPanel" class="detail-panel" hidden>
+    <div class="detail-panel-inner">
+      <button id="closeDetail" class="btn-ghost detail-close">Close ✕</button>
+      <h2 id="detailTitle"></h2>
+      <dl id="detailList"></dl>
+    </div>
+  </aside>
+  <div id="detailOverlay" class="detail-overlay" hidden></div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
